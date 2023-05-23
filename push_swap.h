@@ -7,6 +7,7 @@
 # include <string.h>
 # include "libft/libft.h"
 
-int ft_error(int a);
+int		ft_error(int n);
+void	print_tab(int *tab);
 
 #endif

@@ -3,51 +3,33 @@
 #include <stdio.h>
 #include "push_swap.h"
 
-int	get_nbr(char *str)
+void	print_tab(int *tab)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] > 9)
+	while (tab[i])
 	{
-		str[i] /= 10;
+		printf("%d\n", tab[i]);
+		//ft_putnbr_fd(tab[i], 1);
+		//ft_putchar_fd('\n', 1);
 		i++;
 	}
-	return (i);
 }
 
-int	check_list(char *str)
+int	ft_error(int n)
 {
-	int	i;
-	int	res;
-	int	add;
-
-	add = 0;
-	res = 0;
-	i = 0;
-	while (str[i] != '\0')
-	{
-		add = get_nbr(str + i);
-		res = ft_atoi(str + add + i);
-	printf("%d\n", res);	
-		i++;
-	}
-	return (i);
+	if (n == 0)
+		exit(0);
+	if (n == -1)
+		exit((ft_putendl_fd("Wrong number of arguments", 2), -2));
+	if (n == 0)
+		exit(-1);
+	if (n == -3)
+		exit(-1);
+	if (n == -4)
+		exit(0);
+	if (n == -5)
+		exit(0);
+	exit(EXIT_FAILURE);
 }
-
-int	main(int argc, char **argv)
-{
-	int	ret;
-
-	ret = 0;
-	if (argc != 2)
-		return (-1);
-		//ft_error(-1);
-	printf("%s\n", argv[1]);
-	ret = check_list(argv[1]);
-	if (ret == -1)
-		ft_error(-1);
-	return (0);
-}
-
-//xrandr --output eDP --mode 2560x1440
