@@ -1,20 +1,33 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "push_swap.h"
 
-void	print_tab(int *tab)
+
+int	tab_size(char	*str)
 {
 	int	i;
+	
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+int	count_chained_list(t_ska *list)
+{
+	int		i;
+	t_ska	*current;
 
 	i = 0;
-	while (tab[i])
+	current = list;
+	while (current != NULL)
 	{
-		printf("%d\n", tab[i]);
-		//ft_putnbr_fd(tab[i], 1);
-		//ft_putchar_fd('\n', 1);
 		i++;
+		current = current->next;
 	}
+	return (i);
 }
 
 int	ft_error(int n)
