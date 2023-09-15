@@ -34,10 +34,9 @@ int	main(int argc, char **argv)
 	t_ska	*head_a; // sauvegarde du debut de la chaine liste_a
 	int		i;
 	int		x;
-
+	
 	if (argc < 2)
 		return (ft_error(-1));
-	// tab = parsing(argc, argv, tab);
 	i = sizeof(tab) / sizeof(int);
 	list_a = NULL;
 	list_b = NULL;

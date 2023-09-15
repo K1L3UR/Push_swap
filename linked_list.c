@@ -61,19 +61,19 @@ t_list *ft_lstlast(t_list *lst)
 	return lst;
 }
 
-int main()
-{
-	t_list	*p;
-	t_list	*n;
-	int		i;
+// int main()
+// {
+// 	t_list	*p;
+// 	t_list	*n;
+// 	int		i;
 
-	p = ft_lstnew("ligne 1");
-	n = ft_lstnew("ligne 2");
-	ft_lstadd_front(&p, n);
-	n = ft_lstnew("ligne 3");
-	ft_lstadd_front(&p, n);
-	print_list(&p);
-	i = ft_lstsize(p);
-	printf("%d\n", i);
-	return 0;
-}
+// 	p = ft_lstnew("ligne 1");
+// 	n = ft_lstnew("ligne 2");
+// 	ft_lstadd_front(&p, n);
+// 	n = ft_lstnew("ligne 3");
+// 	ft_lstadd_front(&p, n);
+// 	print_list(&p);
+// 	i = ft_lstsize(p);
+// 	printf("%d\n", i);
+// 	return 0;
+// }

@@ -3,19 +3,37 @@
 #include <stdio.h>
 #include "push_swap.h"
 
-int	parsing(int argc, char **argv, t_ska **list)
+void double_check(t_ska *list, int nb)
 {
-	int	i;
-	int	num;
+	t_ska *ptr;
+
+	ptr = NULL;
+	//ptr = list;
+	ptr = ptr->next;
+	while (ptr->next != NULL)
+	{
+		printf("%d\nnb :", ptr->n);
+		if (ptr->n = nb)
+			ft_error(-2);
+		else
+			ptr = ptr->next;
+	}
+}
+
+int parsing(int argc, char **argv, t_ska **list)
+{
+	int i;
+	int num;
 
 	i = 0;
 	while (argv[1][i] != '\0')
 	{
-		if (argv[1][i] >= '0' && argv[1][i] <= '9' || argv[1][i] == ' ')
+		if (argv[1][i] >= '0' && argv[1][i] <= '9' || argv[1][i] == ' ') // utiliser l'atoi special ici
 		{
-			num = ft_atoi(&argv[1][i]);
+			num = ft_atoi(&argv[1][i]); // utiliser un atoi special car je dois stocker "+1 2 -3" et enlever les doublons
 			*list = add_link(*list, num);
 			i++;
+			double_check(*list, num);
 			while (argv[1][i] >= '0' && argv[1][i] <= '9')
 				i++;
 		}
