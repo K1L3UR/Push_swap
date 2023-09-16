@@ -1,60 +1,80 @@
+#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
+#include "libft/libft.h"
 #include "push_swap.h"
 
+t_ska	*ft_lstlast(t_ska *lst)
+{
+	t_ska	*ptr = lst;
 
+    if (lst == NULL)
+    	return NULL;
+    while (ptr->next != NULL)
+    	ptr = ptr->next;
+	return (ptr);
+}
 
-// --------------------------------------------------- LEGACY CODE ---------------------------------------------------
+void print_list(t_ska *list)
+{
+	while (list != NULL)
+	{
+		ft_putnbr_fd(list->n, 1);
+		ft_putchar_fd('\n', 1);
+		list = list->next;
+	}
+}
 
-// int	check_list(char *str, int **tab)
+t_ska *add_link(t_ska *list, int nbr)
+{
+	t_ska 	*ptr;
+
+	ptr = malloc(sizeof(t_ska));
+	if (!ptr)
+		return (NULL);
+	ptr->n = nbr;
+	ptr->next = list;
+	return (ptr);
+}
+
+int	main(int argc, char **argv)
+{
+	int		tab[] = {1, 2, 3, 4, 5, 6, 7};
+	t_ska 	*list_a; // la seule liste qui recois la chaine de nombre
+	t_list	p_struct;
+	int		i;
+	int		x;
+
+	p_struct.i = 0;
+	p_struct.ptr_lst = NULL;
+	if (argc < 2)
+		return (ft_error(-1));
+	i = sizeof(tab) / sizeof(int);
+	list_a = NULL;
+	x = parsing(argc, argv, &list_a);
+	p_struct.head_ref = ft_lstlast(list_a);
+	p_struct.ptr_lst = list_a;
+	p_struct.i = count_chained_list(list_a);
+	print_list(list_a);
+	printf("%d\n", p_struct.head_ref->n);
+	//swap_a(&p_struct);
+	printf("------------------------------------\n");
+	print_list(list_a);
+	return (0);
+}
+
+// int	main()
 // {
-// 	int	i;
-// 	int	res;
-// 	int	add;
-// 	int	size;
+// 	int		tab[] = {1, 2, 3};
+// 	t_ska 	*list;
+// 	int		i;
 
-// 	add = 0;
-// 	res = 0;
-// 	i = 0;
-// 	size = 1;
-// 	while (str[i] != '\0')
+// 	i = 3;
+// 	list = NULL;
+// 	while (i > 0)
 // 	{
-// 		if (ft_isdigit(str[i]) == 1)
-// 		{
-// 			res = ft_atoi(&str[i]);
-// 			size++;
-// 			*tab = realloc(*tab, size * sizeof(int));
-// 			printf("%d\n", tab[0][i]);
-// 			while (ft_isdigit(str[i]) == 1)
-// 				i++;
-// 		}
-// 		else
-// 			if (str[i] == ' ')
-// 				i++;
-// 			else
-// 				ft_error(-2);
+// 		list = add_link(list ,tab[i - 1] );
+// 		i--;
 // 	}
-// 	return (i);
+// 	print_list(list);
 // }
-
-// int	main(int argc, char **argv)
-// {
-// 	int	ret;
-// 	int	*tab;
-
-// 	ret = 0;
-// 	if (argc != 2)
-// 		ft_error(-1);
-// 	printf("%s\n", argv[1]);
-// 	tab = (int*)malloc(sizeof(int) * 1);
-// 	ret = check_list(argv[1], &tab);
-// 	print_tab(tab);
-// 	if (ret == -1)
-// 		ft_error(-1);
-// 	return (0);
-// }
-
-// --------------------------------------------------- LEGACY CODE ---------------------------------------------------
-
-//xrandr --output eDP --mode 2560x1440

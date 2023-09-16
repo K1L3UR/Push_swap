@@ -13,7 +13,7 @@ void double_check(t_ska *list, int nb)
 	while (ptr->next != NULL)
 	{
 		printf("%d\nnb :", ptr->n);
-		if (ptr->n = nb)
+		if (ptr->n == nb) // forcement vrai, je dois check le maillon d'apres dans la liste chaine
 			ft_error(-2);
 		else
 			ptr = ptr->next;
@@ -33,7 +33,7 @@ int parsing(int argc, char **argv, t_ska **list)
 			num = ft_atoi(&argv[1][i]); // utiliser un atoi special car je dois stocker "+1 2 -3" et enlever les doublons
 			*list = add_link(*list, num);
 			i++;
-			double_check(*list, num);
+			//double_check(*list, num); segfault
 			while (argv[1][i] >= '0' && argv[1][i] <= '9')
 				i++;
 		}
