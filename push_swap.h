@@ -7,35 +7,43 @@
 # include <string.h>
 # include "libft/libft.h"
 
-// typedef struct	Stack
+// typedef	struct s_stack_a t_ska;
+
+// struct s_stack_a		// liste chainer a modifier plus tard pour une liste versatile
 // {
-// 	int	*next;
-// 	int	*previous;
-// 	int	capacity;
-// }Stack1, Stack2;
+// 	int	n;
+// 	t_ska *next;
+// };
 
-typedef	struct s_stack_a t_ska;
+// typedef	struct	s_list
+// {
+// 	t_ska	*ptr_lst; 	// pointeur vers la liste chainer
+// 	t_ska	*head_ref;	// sauvegarde du debut de la liste chainer
+// 	size_t	i;			// taille de la liste chainer dans la structure
+// }				t_list;
 
-struct s_stack_a		// liste chainer a modifier plus tard pour une liste versatile
+typedef struct	s_list
 {
-	int	n;
-	t_ska *next;
-};
-
-typedef	struct	s_list
-{
-	t_ska	*ptr_lst; 	// pointeur vers la liste chainer
-	t_ska	*head_ref;	// sauvegarde du debut de la liste chainer
-	size_t	i;			// taille de la liste chainer dans la structure
+	int				n;
+	struct s_list	*next;
+	struct s_list	*prev;
 }				t_list;
 
-
-int		parsing(int argc, char **argv, t_ska **t_list);
+int		parsing(int argc, char **argv, t_list **t_list);
 int		ft_error(int n);
 int		tab_size(char *str);
-int		count_chained_list(t_ska *list);
-t_ska	*add_link(t_ska *list, int nbr);
-void	print_list(t_ska *list);
-t_ska	*swap_a(t_list *bloc);
+int		count_chained_list(t_list *list);
+t_list	*add_link(t_list *list, int nbr);
+void	print_list(t_list *list);
+t_list	*swap_a(t_list *list);
+t_list	*ft_lstnew(int n);
+void	ft_lstclear(t_list **list);
+void	ft_lstadd_front(t_list **list, t_list *new);
+void	print_list(t_list *lst);
+void	rev_print_list(t_list *lst);
+void	push_a(t_list **list_a, t_list **list_b);
+t_list	*ft_b(t_list **list_b);
+void	ft_lstadd_back(t_list **list, t_list *new);
+
 
 #endif

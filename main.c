@@ -4,62 +4,74 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-t_ska	*ft_lstlast(t_ska *lst)
+// t_ska	*ft_lstlast(t_ska *lst)
+// {
+// 	t_ska	*ptr = lst;
+
+//     if (lst == NULL)
+//     	return NULL;
+//     while (ptr->next != NULL)
+//     	ptr = ptr->next;
+// 	return (ptr);
+// }
+
+// void print_list(t_ska *list)
+// {
+// 	while (list != NULL)
+// 	{
+// 		ft_putnbr_fd(list->n, 1);
+// 		ft_putchar_fd('\n', 1);
+// 		list = list->next;
+// 	}
+// }
+
+// t_ska *add_link(t_ska *list, int nbr)
+// {
+// 	t_ska 	*ptr;
+
+// 	ptr = malloc(sizeof(t_ska));
+// 	if (!ptr)
+// 		return (NULL);
+// 	ptr->n = nbr;
+// 	ptr->next = list;
+// 	return (ptr);
+// }
+
+t_list	*ft_b(t_list **list_b)
 {
-	t_ska	*ptr = lst;
+	t_list	*ptr;
 
-    if (lst == NULL)
-    	return NULL;
-    while (ptr->next != NULL)
-    	ptr = ptr->next;
-	return (ptr);
-}
-
-void print_list(t_ska *list)
-{
-	while (list != NULL)
-	{
-		ft_putnbr_fd(list->n, 1);
-		ft_putchar_fd('\n', 1);
-		list = list->next;
-	}
-}
-
-t_ska *add_link(t_ska *list, int nbr)
-{
-	t_ska 	*ptr;
-
-	ptr = malloc(sizeof(t_ska));
-	if (!ptr)
-		return (NULL);
-	ptr->n = nbr;
-	ptr->next = list;
-	return (ptr);
+	ptr = ft_lstnew(8);
+	ft_lstadd_front(list_b, ft_lstnew(8));
+	return (*list_b);
 }
 
 int	main(int argc, char **argv)
 {
 	int		tab[] = {1, 2, 3, 4, 5, 6, 7};
-	t_ska 	*list_a; // la seule liste qui recois la chaine de nombre
-	t_list	p_struct;
+	t_list	*list_a; // la seule liste qui recois la chaine de nombre
+	t_list	*list_b;
+	t_list	*ptr;
 	int		i;
 	int		x;
 
-	p_struct.i = 0;
-	p_struct.ptr_lst = NULL;
+	list_b = NULL;
+	ft_lstadd_front(&list_b, ft_lstnew(8));
 	if (argc < 2)
 		return (ft_error(-1));
 	i = sizeof(tab) / sizeof(int);
 	list_a = NULL;
 	x = parsing(argc, argv, &list_a);
-	p_struct.head_ref = ft_lstlast(list_a);
-	p_struct.ptr_lst = list_a;
-	p_struct.i = count_chained_list(list_a);
+	ptr = list_a;
 	print_list(list_a);
-	printf("%d\n", p_struct.head_ref->n);
-	//swap_a(&p_struct);
+	printf("------------------------------------\n");
+	//swap_a(list_a);
+	push_a(&list_a, &list_b);
 	printf("------------------------------------\n");
 	print_list(list_a);
+	printf("------------------------------------\n");
+	print_list(list_b);
+	printf("------------------------------------\n");
 	return (0);
 }
 

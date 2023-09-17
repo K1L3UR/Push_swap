@@ -4,76 +4,102 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct s_list
-{
-	void *content;
-	struct s_list *next;
-} t_list;
+// typedef struct	s_list
+// {
+// 	int				n;
+// 	struct s_list	*next;
+// 	struct s_list	*prev;
+// }				t_list;
 
-t_list *ft_lstnew(void *content)
+t_list	*ft_lstnew(int n)
 {
 	t_list *p;
 
 	p = (t_list *)malloc(sizeof(t_list));
-	p->content = content;
-	p->next = NULL;
+	p->n = n;
+	p->next = p;
+	p->prev = p;
 	return p;
 }
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstclear(t_list **list)
 {
-	new->next = *lst;
-	*lst = new;
+	t_list	*ptr;
+	t_list	*l;
+	t_list	*last;
+
+	if (!*list)
+		return ;
+	ptr = *list;
+	l = *list;
+	last = l->prev;
+	while (ptr != last)
+	{
+		l = l->next;
+		free(ptr);
+		ptr = l;
+	}
+	free(last);
+	*list = NULL;
 }
 
-void print_list(t_list **lst)
+void	ft_lstadd_back(t_list **list, t_list *new)
 {
-	t_list *temp = *lst;
-
-	while (temp != NULL)
+	if (!*list)
 	{
-		printf("%s\n", (char *)temp->content);
-		temp = temp->next;
+		ft_lstadd_front(list, new);
+		return ;
+	}
+	*list = (*list)->prev;
+	ft_lstadd_front(list, new);
+	*list = (*list)->prev;
+}
+
+void	ft_lstadd_front(t_list **list, t_list *new)
+{
+	t_list	*ptr;
+	
+	ptr = *list;
+	if (!new)
+		return ;
+	if (!*list)
+	{
+		*list = new;
+		return ;
+	}
+	new->next = ptr;
+	new->prev = ptr->prev;
+	ptr->prev->next = new;
+	ptr->prev = new;
+}
+
+void	rev_print_list(t_list *lst)
+{
+	t_list	*first = lst;
+
+	if (!lst)
+		return ;
+	lst = lst->prev;
+	while (1)
+	{
+		printf("%d\n", lst->n);
+		if (lst == first)
+			break;
+		lst = lst->prev;
 	}
 }
 
-int ft_lstsize(t_list *lst)
+void	print_list(t_list *lst)
 {
-	int	i;
+	t_list	*last = lst;
 
-	i = 0;
-	while (lst != NULL)
+	if (!lst)
+		return ;
+	while (1)
 	{
+		printf("%d\n", lst->n);
+		if (lst->next == last)
+			break;
 		lst = lst->next;
-		i++;
 	}
-	return (i);
 }
-
-t_list *ft_lstlast(t_list *lst)
-{
-	if (lst == NULL)
-		return NULL;
-	while (lst->next != NULL)
-	{
-		lst = lst->next;
-	}
-	return lst;
-}
-
-// int main()
-// {
-// 	t_list	*p;
-// 	t_list	*n;
-// 	int		i;
-
-// 	p = ft_lstnew("ligne 1");
-// 	n = ft_lstnew("ligne 2");
-// 	ft_lstadd_front(&p, n);
-// 	n = ft_lstnew("ligne 3");
-// 	ft_lstadd_front(&p, n);
-// 	print_list(&p);
-// 	i = ft_lstsize(p);
-// 	printf("%d\n", i);
-// 	return 0;
-// }
