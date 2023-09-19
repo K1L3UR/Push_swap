@@ -9,6 +9,7 @@ int	resolution(t_list **list_a, t_list **list_b)
 	ptr_a = *list_a;
 	ptr_b = *list_b;
 	i = 8;
+	i >>= 1;
 	printf("%d\n", i);
 	return (0);
 }
