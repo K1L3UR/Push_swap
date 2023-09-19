@@ -52,26 +52,30 @@ int	main(int argc, char **argv)
 	t_list	*list_a; // la seule liste qui recois la chaine de nombre
 	t_list	*list_b;
 	t_list	*ptr;
+	t_list	*P;
 	int		i;
 	int		x;
 
 	list_b = NULL;
 	ft_lstadd_front(&list_b, ft_lstnew(8));
+	ft_lstadd_front(&list_b, ft_lstnew(10));
 	if (argc < 2)
 		return (ft_error(-1));
 	i = sizeof(tab) / sizeof(int);
 	list_a = NULL;
 	x = parsing(argc, argv, &list_a);
 	ptr = list_a;
-	print_list(list_a);
 	printf("------------------------------------\n");
-	//swap_a(list_a);
-	push_a(&list_a, &list_b);
-	printf("------------------------------------\n");
-	print_list(list_a);
-	printf("------------------------------------\n");
+	push(&list_a, &list_b);
 	print_list(list_b);
 	printf("------------------------------------\n");
+	push(&list_a, &list_b);
+	printf("------------------------------------\n");
+	print_list(list_a);
+	printf("/////////////////////////////////////\n");
+	print_list(list_b);
+	printf("------------------------------------\n");
+	resolution(&list_a, &list_b);
 	return (0);
 }
 

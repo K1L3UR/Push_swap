@@ -35,15 +35,15 @@ int		tab_size(char *str);
 int		count_chained_list(t_list *list);
 t_list	*add_link(t_list *list, int nbr);
 void	print_list(t_list *list);
-t_list	*swap_a(t_list *list);
+t_list	*swap(t_list *list);
 t_list	*ft_lstnew(int n);
 void	ft_lstclear(t_list **list);
 void	ft_lstadd_front(t_list **list, t_list *new);
 void	print_list(t_list *lst);
 void	rev_print_list(t_list *lst);
-void	push_a(t_list **list_a, t_list **list_b);
-t_list	*ft_b(t_list **list_b);
+void	push(t_list **list_a, t_list **list_b);
 void	ft_lstadd_back(t_list **list, t_list *new);
+int		resolution(t_list **list_a, t_list **lists_b);
 
 
 #endif
