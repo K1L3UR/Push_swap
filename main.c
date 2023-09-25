@@ -57,8 +57,8 @@ int	main(int argc, char **argv)
 	int		x;
 
 	list_b = NULL;
-	ft_lstadd_front(&list_b, ft_lstnew(8));
-	ft_lstadd_front(&list_b, ft_lstnew(10));
+	//ft_lstadd_front(&list_b, ft_lstnew(8));
+	//ft_lstadd_front(&list_b, ft_lstnew(10));
 	if (argc < 2)
 		return (ft_error(-1));
 	i = sizeof(tab) / sizeof(int);

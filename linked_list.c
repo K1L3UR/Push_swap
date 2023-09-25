@@ -73,6 +73,26 @@ void	ft_lstadd_front(t_list **list, t_list *new)
 	ptr->prev = new;
 }
 
+size_t	ft_lst_size(t_list **list_a)
+{
+	t_list	*ptr_a;
+	size_t	i;
+
+	i = 0;
+	ptr_a = *list_a;
+	if (!(*list_a))
+		return (-1);
+	while ((*list_a))
+	{
+		i++;
+		if (ptr_a == (*list_a))
+		{
+			return (i);
+		}
+	}
+	return (-1);
+}
+
 void	rev_print_list(t_list *lst)
 {
 	t_list	*first = lst;

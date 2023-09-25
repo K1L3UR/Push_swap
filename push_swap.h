@@ -44,6 +44,8 @@ void	rev_print_list(t_list *lst);
 void	push(t_list **list_a, t_list **list_b);
 void	ft_lstadd_back(t_list **list, t_list *new);
 int		resolution(t_list **list_a, t_list **lists_b);
+size_t	ft_lst_size(t_list **list_a);
+t_list	*reverse(t_list *list);
 
 
 #endif
