@@ -48,20 +48,19 @@ t_list	*ft_b(t_list **list_b)
 
 int	main(int argc, char **argv)
 {
-	int		tab[] = {1, 2, 3, 4, 5, 6, 7};
+	//int		tab[] = {1, 2, 3, 4, 5, 6, 7};
 	t_list	*list_a; // la seule liste qui recois la chaine de nombre
 	t_list	*list_b;
 	t_list	*ptr;
-	t_list	*P;
 	int		i;
 	int		x;
 
 	list_b = NULL;
-	//ft_lstadd_front(&list_b, ft_lstnew(8));
-	//ft_lstadd_front(&list_b, ft_lstnew(10));
+	ft_lstadd_front(&list_b, ft_lstnew(8));
+	ft_lstadd_front(&list_b, ft_lstnew(10));
 	if (argc < 2)
 		return (ft_error(-1));
-	i = sizeof(tab) / sizeof(int);
+	//i = sizeof(tab) / sizeof(int);
 	list_a = NULL;
 	x = parsing(argc, argv, &list_a);
 	ptr = list_a;
@@ -76,6 +75,9 @@ int	main(int argc, char **argv)
 	//print_list(list_b);
 	printf("------------------------------------\n");
 	resolution(&list_a, &list_b);
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	print_list(list_a);
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	return (0);
 }
 

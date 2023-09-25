@@ -117,7 +117,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 		while (ft_lst_size(stack_b) != 0)
 		{
 			push(stack_a, stack_b);
-			printf("PUSH B TO A BOUCLE\n"); // boucle inf car la liste b est vide
+			printf("PUSH B TO A BOUCLE\n");
 		}
 		i++;
 	}
