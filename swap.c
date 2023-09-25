@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_list	*swap(t_list *list)
+t_list	*swap(t_list *list) // a tester pour ss (swap a et swap b)
 {
 	t_list	*ptr;
 	t_list	*fuhrer;

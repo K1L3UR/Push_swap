@@ -11,7 +11,6 @@ unsigned int countBits(unsigned int n)
     return count;
 }
    
-/* Driver program*/
 int main()
 {
     int i = 65;

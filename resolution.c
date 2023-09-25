@@ -1,25 +1,5 @@
 #include "push_swap.h"
 
-// static int	get_max_bits(t_list **stack)
-// {
-// 	t_list	*head;
-// 	int		max;
-// 	int		max_bits;
-
-// 	head = *stack;
-// 	max = head->index;
-// 	max_bits = 0;
-// 	while (head)
-// 	{
-// 		if (head->index > max)
-// 			max = head->index;
-// 		head = head->next;
-// 	}
-// 	while ((max >> max_bits) != 0)
-// 		max_bits++;
-// 	return (max_bits);
-// }
-
 int	find_min(t_list **list_a)
 {
 	int		min;
@@ -93,13 +73,13 @@ int	find_digit(int max)
 // 			{
 // 				j++;
 // 				n = (*list_a)->n;
-// 				if ((n >> i) & 1 == 1)
-// 					reverse();
+// 				if (((n >> i) & 1) == 1)
+// 					reverse(*list_a);
 // 				else
 // 					push(list_b, list_a);
 // 			}
 // 			while (!(*list_b))
-// 				push(list_a, list_b);
+// 				push(list_a, list_b); // ici
 // 		}
 // 	}
 // 	return (0);
@@ -137,7 +117,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 		while (ft_lst_size(stack_b) != 0)
 		{
 			push(stack_a, stack_b);
-			printf("PUSH B TO A BOUCLE\n");
+			printf("PUSH B TO A BOUCLE\n"); // boucle inf car la liste b est vide
 		}
 		i++;
 	}
@@ -160,7 +140,7 @@ int	resolution(t_list **list_a, t_list **list_b)
 	//printf("%d\n", max);	
 	//digit = find_digit(max);
 	//printf("%d\n", digit);
-	//radix(list_a, list_b, digit, max);
+	// radix(list_a, list_b, digit, max);
 	radix_sort(list_a, list_b, min, max);
 	return (0);
 }
