@@ -95,8 +95,14 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 
 	i = 0;
 	head_a = *stack_a;
-	size = ft_lst_size(stack_a);
 	max_bits = find_digit(max);
+	size = ft_lst_size(stack_b);
+	//size = ft_lst_size(stack_a);
+	// printf("%d\n", i); // bon
+	// printf("%d\n", max); // bon 
+	printf("%d\n", size); // pas bon
+	sleep(2);
+	// printf("%d\n", max_bits); // bon
 	while (i < max_bits)
 	{
 		j = 0;
@@ -141,6 +147,8 @@ int	resolution(t_list **list_a, t_list **list_b)
 	//digit = find_digit(max);
 	//printf("%d\n", digit);
 	// radix(list_a, list_b, digit, max);
+	//push(list_a, list_b);
+	//push(list_a, list_b);
 	radix_sort(list_a, list_b, min, max);
 	return (0);
 }

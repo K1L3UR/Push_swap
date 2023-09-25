@@ -14,6 +14,6 @@ unsigned int countBits(unsigned int n)
 int main()
 {
     int i = 65;
-    printf("%d\n", countBits(99999));
+    printf("%d\n", countBits(12222));
     return 0;
 }
