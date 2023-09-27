@@ -2,7 +2,7 @@ NAME = push_swap
 CFLAGS := -MMD -MP -g #-Wall -Wextra -Werror -MMD -MP -g
 LDFLAGS := -L libft -lft
 CC = clang
-SRC = parsing.c main.c utils.c swap.c linked_list.c resolution.c
+SRC = parsing.c main.c utils.c instruction.c linked_list.c resolution.c
 DEP = $(SRC:.c=.d)
 OBJ = $(SRC:.c=.o)
 

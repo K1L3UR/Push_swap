@@ -56,30 +56,38 @@ int	main(int argc, char **argv)
 	int		x;
 
 	list_b = NULL;
-	ft_lstadd_front(&list_b, ft_lstnew(8));
-	ft_lstadd_front(&list_b, ft_lstnew(10));
+	//ft_lstadd_front(&list_b, ft_lstnew(2));
+	//ft_lstadd_front(&list_b, ft_lstnew(10));
 	if (argc < 2)
 		return (ft_error(-1));
-	//i = sizeof(tab) / sizeof(int);
 	list_a = NULL;
 	x = parsing(argc, argv, &list_a);
 	ptr = list_a;
-	printf("------------------------------------\n");
-	//push(&list_a, &list_b);
-	print_list(list_b);
-	printf("------------------------------------\n");
-	//push(&list_a, &list_b);
-	printf("------------------------------------\n");
-	print_list(list_a);
-	printf("/////////////////////////////////////\n");
-	//print_list(list_b);
-	printf("------------------------------------\n");
-	resolution(&list_a, &list_b);
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-	print_list(list_a);
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-	print_list(list_b);
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	printf("-----------------------------------\n");
+	swap(list_a);
+	// print_list(list_a);
+	printf("///////////////////SWAP-A//////////////////\n");
+	push_a_to_b(&list_a, &list_b);
+	//print_list(list_a);
+	// print_list(list_b);
+	// printf("///////////////////LIST B AFTER PUSH B//////////////////\n");
+	// swap(list_a);
+	// print_list(list_a);
+	// printf("///////////////////LIST_A//////////////////\n");
+	// rotate(list_a);
+	// print_list(list_a);
+	// printf("///////////////////LIST_A//////////////////\n");
+	// push_a(&list_a, &list_b);
+	// printf("----------------LIST_A--------------------\n");
+	// print_list(list_a);
+	// printf("///////////////////LIST_A//////////////////\n");
+	// printf("-------------------LIST_B-----------------\n");
+	// //resolution(&list_a, &list_b);
+	// printf("~~~~~~~~~~~~~~~~~~~~LIST_B PUIS A~~~~~~~~~~~~~~~~\n");
+	// //print_list(list_a);
+	// printf("~~~~~~~~~~~~~~~~~~~LIST A PUIS B~~~~~~~~~~~~~~~~~\n");
+	// //print_list(list_b);
+	// printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	return (0);
 }
 

@@ -33,7 +33,6 @@ int	find_max(t_list **list_a)
 		return (ft_error(-1));
 	while ((*list_a) != last)
 	{
-		//printf("%d\n|----|", (*list_a)->n);
 		if (max < (*list_a)->n)
 			max = (*list_a)->n;
 		(*list_a) = (*list_a)->next;
@@ -100,8 +99,6 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 	//size = ft_lst_size(stack_a);
 	// printf("%d\n", i); // bon
 	// printf("%d\n", max); // bon 
-	printf("%d\n", size); // pas bon
-	sleep(2);
 	// printf("%d\n", max_bits); // bon
 	while (i < max_bits)
 	{
@@ -112,20 +109,29 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 			if (((min >> i) & 1) == 1)
 			{
 				(*stack_a) = reverse((*stack_a));
+				printf("~~~~~~~~~~~~~~LIST_A~~~~~~~~~~~~~~~~~~~~~~\n");
+				print_list(*stack_a);
+				printf("~~~~~~~~~~~~~~LIST_a~~~~~~~~~~~~~~~~~~~~~~\n");
 				printf("REVERSE BOUCLE\n");
+				printf("~~~~~~~~~~~~~~LIST_B~~~~~~~~~~~~~~~~~~~~~~\n");
+				print_list(*stack_b);
+				printf("~~~~~~~~~~~~~~LIST_B~~~~~~~~~~~~~~~~~~~~~~\n");
+				sleep(2);
 			}
 			else
 			{	
-				push(stack_b, stack_a);
+				push_a_to_b(stack_b, stack_a);
 				printf("PUSH A TO B BOUCLE\n");			
 			}
 		}
 		while (ft_lst_size(stack_b) != 0)
 		{
-			push(stack_a, stack_b);
+			push_b_to_a(stack_a, stack_b);
 			printf("PUSH B TO A BOUCLE\n");
 		}
 		i++;
+		print_list(*stack_a);
+		sleep(3);
 	}
 }
 
@@ -149,6 +155,7 @@ int	resolution(t_list **list_a, t_list **list_b)
 	// radix(list_a, list_b, digit, max);
 	//push(list_a, list_b);
 	//push(list_a, list_b);
-	radix_sort(list_a, list_b, min, max);
+	//radix_sort(list_a, list_b, min, max);
+	//push_b(list_b, list_a);
 	return (0);
 }
