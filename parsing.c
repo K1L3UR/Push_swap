@@ -30,13 +30,13 @@ int parsing(int argc, char **argv, t_list **list)
 	ptr = *list;
 	while (argv[1][i] != '\0')
 	{
-		if (argv[1][i] >= '0' && argv[1][i] <= '9' || argv[1][i] == ' ') // utiliser l'atoi special ici
+		if (ft_isdigit(argv[1][i]) || argv[1][i] == ' ' || argv[1][i] == '-') // utiliser l'atoi special ici
 		{
 			num = ft_atoi(&argv[1][i]); // utiliser un atoi special car je dois stocker "+1 2 -3" et enlever les doublons
 			ptr = ft_lstnew(num);
 			ft_lstadd_front(list, ptr);
 			i++;
-			while (argv[1][i] >= '0' && argv[1][i] <= '9')
+			while (ft_isdigit(argv[1][i]))
 				i++;
 		}
 		else
