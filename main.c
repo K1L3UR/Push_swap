@@ -51,23 +51,32 @@ int	main(int argc, char **argv)
 	//int		tab[] = {1, 2, 3, 4, 5, 6, 7};
 	t_list	*list_a; // la seule liste qui recois la chaine de nombre
 	t_list	*list_b;
-	t_list	*ptr;
 	int		i;
 	int		x;
 
 	list_b = NULL;
-	//ft_lstadd_front(&list_b, ft_lstnew(2));
+	// ft_lstadd_front(&list_b, ft_lstnew(2));
 	//ft_lstadd_front(&list_b, ft_lstnew(10));
 	if (argc < 2)
 		return (ft_error(-1));
 	list_a = NULL;
 	x = parsing(argc, argv, &list_a);
-	ptr = list_a;
+	printf("-----------PARSING------------------------\n");
+	print_list(list_a);
 	printf("-----------------------------------\n");
 	swap(list_a);
-	// print_list(list_a);
+	printf("-------------SWAP----------------------\n");
+	print_list(list_a);
 	printf("///////////////////SWAP-A//////////////////\n");
-	push_a_to_b(&list_a, &list_b);
+	push(&list_b, &list_a);
+	push(&list_a, &list_b);
+	// push_b_to_a(&list_a, &list_b);
+	// push_b_to_a(&list_a, &list_b);
+	printf("///////////////////LIST A //////////////////\n");
+	print_list(list_a);
+	printf("///////////////////LIST B//////////////////\n");
+	print_list(list_b);
+	return 0;
 	//print_list(list_a);
 	// print_list(list_b);
 	// printf("///////////////////LIST B AFTER PUSH B//////////////////\n");
@@ -82,7 +91,11 @@ int	main(int argc, char **argv)
 	// print_list(list_a);
 	// printf("///////////////////LIST_A//////////////////\n");
 	// printf("-------------------LIST_B-----------------\n");
-	// //resolution(&list_a, &list_b);
+	resolution(&list_a, &list_b);
+	printf("///////////////////LIST A //////////////////\n");
+	print_list(list_a);
+	printf("///////////////////LIST B//////////////////\n");
+	print_list(list_b);
 	// printf("~~~~~~~~~~~~~~~~~~~~LIST_B PUIS A~~~~~~~~~~~~~~~~\n");
 	// //print_list(list_a);
 	// printf("~~~~~~~~~~~~~~~~~~~LIST A PUIS B~~~~~~~~~~~~~~~~~\n");

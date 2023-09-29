@@ -41,12 +41,11 @@ void	ft_lstclear(t_list **list);
 void	ft_lstadd_front(t_list **list, t_list *new);
 void	print_list(t_list *lst);
 void	rev_print_list(t_list *lst);
-void	push_b_to_a(t_list **list_a, t_list **list_b);
 void	ft_lstadd_back(t_list **list, t_list *new);
 int		resolution(t_list **list_a, t_list **lists_b);
-size_t	ft_lst_size(t_list **list_a);
+size_t	ft_lst_size(t_list *list_a);
 t_list	*reverse(t_list *list);
 t_list	*rotate(t_list *list);
-void	push_a_to_b(t_list **list_a, t_list **list_b);
+void	push(t_list **dst, t_list **src);
 
 #endif

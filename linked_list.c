@@ -1,15 +1,6 @@
 #include "push_swap.h"
-#include <stdlib.h>
-
 #include <stdio.h>
 #include <stdlib.h>
-
-// typedef struct	s_list
-// {
-// 	int				n;
-// 	struct s_list	*next;
-// 	struct s_list	*prev;
-// }				t_list;
 
 t_list	*ft_lstnew(int n)
 {
@@ -73,42 +64,26 @@ void	ft_lstadd_front(t_list **list, t_list *new)
 	ptr->prev = new;
 }
 
-size_t	ft_lst_size(t_list **list_a)
+size_t	ft_lst_size(t_list *list)
 {
 	t_list	*ptr_a;
 	size_t	i;
 
-	ptr_a = *list_a;
-	if (!(*list_a))
+	ptr_a = list;
+	if (!list)
 		return (0);
 	i = 1;
-	if (ptr_a->next == (*list_a)) // ?????????????????????????????????????
+	if (ptr_a->next == list)
 		return (0);
 	ptr_a = ptr_a->next;
-	while ((*list_a))
+	while (list)
 	{
-		if (ptr_a == (*list_a))
+		if (ptr_a == list)
 			return (i);
 		i++;
 		ptr_a = ptr_a->next;
 	}
 	return (0);
-}
-
-void	rev_print_list(t_list *lst)
-{
-	t_list	*first = lst;
-
-	if (!lst)
-		return ;
-	lst = lst->prev;
-	while (1)
-	{
-		printf("%d\n", lst->n);
-		if (lst == first)
-			break;
-		lst = lst->prev;
-	}
 }
 
 void	print_list(t_list *lst)
@@ -117,11 +92,17 @@ void	print_list(t_list *lst)
 
 	if (!lst)
 		return ;
+	int n = 0;
 	while (1)
 	{
-		printf("%d\n", lst->n);
+		printf("%d %p %p %p\n", lst->n, lst->prev, lst, lst->next);
 		if (lst->next == last)
 			break;
+		++n;
+		if (n == 5) {
+			puts("alert boucle inf");
+			return ;
+		}
 		lst = lst->next;
 	}
 }
