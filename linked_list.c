@@ -8,6 +8,7 @@ t_list	*ft_lstnew(int n)
 
 	p = (t_list *)malloc(sizeof(t_list));
 	p->n = n;
+	p->index = 0;
 	p->next = p;
 	p->prev = p;
 	return p;
@@ -69,21 +70,18 @@ size_t	ft_lst_size(t_list *list)
 	t_list	*ptr_a;
 	size_t	i;
 
-	ptr_a = list;
 	if (!list)
 		return (0);
-	i = 1;
-	if (ptr_a->next == list)
-		return (0);
-	ptr_a = ptr_a->next;
-	while (list)
+	ptr_a = list;	
+	i = 0;
+	while (1)
 	{
+		ptr_a = ptr_a->next;
+		i++;
 		if (ptr_a == list)
 			return (i);
-		i++;
-		ptr_a = ptr_a->next;
 	}
-	return (0);
+	return (i);
 }
 
 void	print_list(t_list *lst)
@@ -92,17 +90,11 @@ void	print_list(t_list *lst)
 
 	if (!lst)
 		return ;
-	int n = 0;
 	while (1)
 	{
-		printf("%d %p %p %p\n", lst->n, lst->prev, lst, lst->next);
+		printf("%d %p %p %p %d \n", lst->n, lst->prev, lst, lst->next, lst->index);
 		if (lst->next == last)
 			break;
-		++n;
-		if (n == 5) {
-			puts("alert boucle inf");
-			return ;
-		}
 		lst = lst->next;
 	}
 }

@@ -2,9 +2,10 @@
 
 t_list	*swap(t_list *list) // a tester pour ss (swap a et swap b)
 {
-	t_list	*ptr;
-	t_list	*fuhrer;
-	int		tmp;
+	t_list			*ptr;
+	t_list			*fuhrer;
+	int				tmp;
+	unsigned int	mpt;
 
 	ptr = list;
 	if (ptr->next == ptr->prev)
@@ -13,15 +14,18 @@ t_list	*swap(t_list *list) // a tester pour ss (swap a et swap b)
 	tmp = ptr->n;
 	ptr->n = fuhrer->n;
 	fuhrer->n = tmp;
+	mpt = ptr->index;
+	ptr->index = fuhrer->index;
+	fuhrer->index = mpt;
 	return (list);
 }
 
-t_list	*rotate(t_list *list)
+t_list	*rotate(t_list *list) // je suis rotate
 {
 	return (list->next);
 }
 
-t_list	*reverse(t_list *list)
+t_list	*reverse(t_list *list) // je suis reverse rotate
 {
 	return (list->prev);
 }

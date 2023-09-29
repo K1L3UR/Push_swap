@@ -25,6 +25,7 @@
 typedef struct	s_list
 {
 	int				n;
+	uint			index;
 	struct s_list	*next;
 	struct s_list	*prev;
 }				t_list;
@@ -47,5 +48,7 @@ size_t	ft_lst_size(t_list *list_a);
 t_list	*reverse(t_list *list);
 t_list	*rotate(t_list *list);
 void	push(t_list **dst, t_list **src);
+void	init_index(t_list *list);
+unsigned	find_index(t_list *list, int v);
 
 #endif
