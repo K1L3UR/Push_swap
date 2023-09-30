@@ -4,6 +4,7 @@
 
 #include "push_swap.h"
 
+//xrandr --output eDP --mode 2560x1440
 
 int	tab_size(char	*str)
 {
@@ -14,21 +15,6 @@ int	tab_size(char	*str)
 		i++;
 	return (i);
 }
-
-// int	count_chained_list(t_ska *list)
-// {
-// 	int		i;
-// 	t_ska	*current;
-
-// 	i = 0;
-// 	current = list;
-// 	while (current != NULL)
-// 	{
-// 		i++;
-// 		current = current->next;
-// 	}
-// 	return (i);
-// }
 
 int	ft_error(int n)
 {

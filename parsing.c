@@ -7,13 +7,13 @@ void double_check(t_list *list, int nb)
 {
 	t_list *ptr;
 
-	ptr = NULL;
-	//ptr = list;
+	ptr = list;
+	if (ptr->next == list)
+		return ;
 	ptr = ptr->next;
-	while (ptr->next != NULL)
+	while (ptr->next != list)
 	{
-		//printf("%d\nnb :", ptr->n);
-		if (ptr->n == nb) // forcement vrai, je dois check le maillon d'apres dans la liste chaine
+		if (ptr->n == nb)
 			ft_error(-2);
 		else
 			ptr = ptr->next;
@@ -35,6 +35,7 @@ int parsing(int argc, char **argv, t_list **list)
 			num = ft_atoi(&argv[1][i]); // utiliser un atoi special car je dois stocker "+1 2 -3" et enlever les doublons
 			ptr = ft_lstnew(num);
 			ft_lstadd_front(list, ptr);
+			double_check(*list, num);
 			i++;
 			while (ft_isdigit(argv[1][i]))
 				i++;

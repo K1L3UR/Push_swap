@@ -50,38 +50,6 @@ int	find_digit(int max)
 	return (max_bits);
 }
 
-// int	radix(t_list **list_a, t_list **list_b, int max_bits, int max)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	n;
-// 	int	size;
-
-// 	size = ft_lst_size(list_a);
-// 	n = 0;
-// 	i = 0;
-// 	j = 0;
-// 	while ((max >> max_bits) != 0)
-// 	{
-// 		while (i < max_bits)
-// 		{
-// 			i++;
-// 			while (j < size) // list size i assume
-// 			{
-// 				j++;
-// 				n = (*list_a)->n;
-// 				if (((n >> i) & 1) == 1)
-// 					reverse(*list_a);
-// 				else
-// 					push(list_b, list_a);
-// 			}
-// 			while (!(*list_b))
-// 				push(list_a, list_b); // ici
-// 		}
-// 	}
-// 	return (0);
-// }
-
 void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 {
 	t_list	*head_a;
@@ -111,7 +79,6 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 		while (j++ < size)
 		{
 			head_a = *stack_a;
-			//if (((min >> i) & 1) == 1)
 			if (((head_a->index >> i) & 1) == 1)
 			{
 				(*stack_a) = rotate((*stack_a));
@@ -122,7 +89,6 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 				push(stack_b, stack_a);
 				printf("PUSH A TO B BOUCLE\n");			
 			}
-			DD++;
 		}
 		while (ft_lst_size(*stack_b) > 0)
 		{
@@ -133,11 +99,9 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 			print_list(*stack_b);
 			printf("PUSH B TO A BOUCLE\n");
 			getc(stdin);
-			DD++;
 		}
 		i++;
 	}
-	printf("%d je suis DD : \n", DD);
 }
 
 int	resolution(t_list **list_a, t_list **list_b)
@@ -153,13 +117,6 @@ int	resolution(t_list **list_a, t_list **list_b)
 	ptr_b = *list_b;
 	max = find_max(*list_a);
 	min = find_min(*list_a);
-	// printf("%d\n", 10>>1);
-	//digit = find_digit(max);
-	//printf("%d\n", digit);
-	// radix(list_a, list_b, digit, max);
-	//push(list_a, list_b);
-	//push(list_a, list_b);
 	radix_sort(list_a, list_b, min, max);
-	//push_b(list_b, list_a);
 	return (0);
 }

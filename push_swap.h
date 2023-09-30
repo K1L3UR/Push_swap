@@ -7,25 +7,10 @@
 # include <string.h>
 # include "libft/libft.h"
 
-// typedef	struct s_stack_a t_ska;
-
-// struct s_stack_a		// liste chainer a modifier plus tard pour une liste versatile
-// {
-// 	int	n;
-// 	t_ska *next;
-// };
-
-// typedef	struct	s_list
-// {
-// 	t_ska	*ptr_lst; 	// pointeur vers la liste chainer
-// 	t_ska	*head_ref;	// sauvegarde du debut de la liste chainer
-// 	size_t	i;			// taille de la liste chainer dans la structure
-// }				t_list;
-
 typedef struct	s_list
 {
 	int				n;
-	uint			index;
+	unsigned int	index;
 	struct s_list	*next;
 	struct s_list	*prev;
 }				t_list;
