@@ -59,6 +59,7 @@ int parsing(int argc, char **argv, t_list **list)
 	while (av[i])
 	{
 			ptr = ft_lstnew(ft_atoi(av[i]));
+			num = ft_atoi(av[i]);
 			ft_lstadd_front(list, ptr);
 			double_check(*list, num);
 			i++;
