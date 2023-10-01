@@ -1,15 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/01 19:23:16 by arnduran          #+#    #+#             */
+/*   Updated: 2023/10/01 19:58:23 by arnduran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 
 #include "push_swap.h"
 
-//xrandr --output eDP --mode 2560x1440
+void	ft_freelist(t_list **list)
+{
+	t_list	*head;
+
+	head = *list;
+	while (*list)
+	{
+		(*list) = (*list)->next;
+		free(*list);
+	}
+}
+
+void	ft_freetab(char **tab, int i)
+{
+	while (i >= 0)
+	{
+		free(tab[i]);
+		i--;
+	}
+	free(tab);
+}
 
 int	tab_size(char	*str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i] != '\0')
 		i++;

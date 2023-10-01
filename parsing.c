@@ -1,37 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/01 19:13:16 by arnduran          #+#    #+#             */
+/*   Updated: 2023/10/01 20:05:20 by arnduran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "push_swap.h"
 
-int	atoi_special(char *str)
+void	double_check(t_list *list, int nb)
 {
-	int	i;
-	int	nb;
-	int	neg;
-
-	i = 0;
-	neg = 1;
-	nb = 0;
-	while (str[i] >= 8 && str[i] <= 13 || str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	if (str[i] == '-')
-	{
-		neg = -1;
-		i++;
-	}
-	while (ft_isdigit(str[i]))
-	{
-		nb = nb * 10 + str[i] - 0;
-		i++;
-	}
-	return (nb * neg);
-}
-
-void double_check(t_list *list, int nb)
-{
-	t_list *ptr;
+	t_list	*ptr;
 
 	ptr = list;
 	if (ptr->next == list)
@@ -46,7 +32,7 @@ void double_check(t_list *list, int nb)
 	}
 }
 
-int parsing(int argc, char **argv, t_list **list)
+int	parsing(int argc, char **argv, t_list **list)
 {
 	int		i;
 	int		num;
@@ -58,41 +44,44 @@ int parsing(int argc, char **argv, t_list **list)
 	av = ft_split(argv[1], ' ');
 	while (av[i])
 	{
-			ptr = ft_lstnew(ft_atoi(av[i]));
-			num = ft_atoi(av[i]);
-			ft_lstadd_front(list, ptr);
-			double_check(*list, num);
-			i++;
+		ptr = ft_lstnew(ft_atoi(av[i]));
+		num = ft_atoi(av[i]);
+		ft_lstadd_front(list, ptr);
+		double_check(*list, num);
+		i++;
 	}
+	ft_freetab(av, i);
 	return (i);
 }
 
-// int parsing(int argc, char **argv, t_list **list)
-// {
-// 	int		i;
-// 	int		num;
-// 	t_list	*ptr;
+/*
+int parsing(int argc, char **argv, t_list **list)
+{
+	int		i;
+	int		num;
+	t_list	*ptr;
 
-// 	i = 0;
-// 	ptr = *list;
-// 	while (argv[1][i] != '\0')
-// 	{
-// 		// if (ft_isdigit(argv[1][i]) || argv[1][i] == ' ' || argv[1][i] == '-') // utiliser l'atoi special ici
-// 		if (ft_atoi(&argv[1][i]))
-// 		{
-// 			num = ft_atoi(&argv[1][i]); // utiliser un atoi special car je dois stocker "+1 2 -3" et enlever les doublons
-// 			ptr = ft_lstnew(num);
-// 			ft_lstadd_front(list, ptr);
-// 			double_check(*list, num);
-// 			i++;
-// 			while (ft_isdigit(argv[1][i]))
-// 				i++;
-// 		}
-// 		else
-// 			ft_error(-2);
-// 	}
-// 	return (i);
-// }
+	i = 0;
+	ptr = *list;
+	while (argv[1][i] != '\0')
+	{
+		// if (ft_isdigit(argv[1][i]) || argv[1][i] == ' ' || argv[1][i] == '-') // utiliser l'atoi special ici
+		if (ft_atoi(&argv[1][i]))
+		{
+			num = ft_atoi(&argv[1][i]); // utiliser un atoi special car je dois stocker "+1 2 -3" et enlever les doublons
+			ptr = ft_lstnew(num);
+			ft_lstadd_front(list, ptr);
+			double_check(*list, num);
+			i++;
+			while (ft_isdigit(argv[1][i]))
+				i++;
+		}
+		else
+			ft_error(-2);
+	}
+	return (i);
+}
+*/
 
 unsigned int	find_index(t_list *list, int v)
 {
@@ -123,22 +112,6 @@ void	init_index(t_list *list)
 		list->index = find_index(list, list->n);
 		list = list->next;
 		if (list == last)
-			break;
+			break ;
 	}
 }
-
-// int	*parsing(int argc, char **argv, int *tab)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (argv[1][i] != '\0')
-// 	{
-// 		if (argv[1][i] >= '0' && argv[1][i] <= '9' || argv[1][i] == ' ')
-// 			i++;
-// 		else
-// 			ft_error(-2);
-// 	}
-// 	tab = malloc((sizeof(int) * i) + 1);
-// 	return (tab);
-// }

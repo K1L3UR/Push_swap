@@ -1,4 +1,16 @@
-# ifndef PUSH_SWAP_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/01 19:20:53 by arnduran          #+#    #+#             */
+/*   Updated: 2023/10/01 19:59:56 by arnduran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stdio.h>
@@ -7,7 +19,7 @@
 # include <string.h>
 # include "libft/libft.h"
 
-typedef struct	s_list
+typedef struct s_list
 {
 	int				n;
 	unsigned int	index;
@@ -15,25 +27,27 @@ typedef struct	s_list
 	struct s_list	*prev;
 }				t_list;
 
-int		parsing(int argc, char **argv, t_list **t_list);
-int		ft_error(int n);
-int		tab_size(char *str);
-int		count_chained_list(t_list *list);
-t_list	*add_link(t_list *list, int nbr);
-void	print_list(t_list *list);
-t_list	*swap(t_list *list);
-t_list	*ft_lstnew(int n);
-void	ft_lstclear(t_list **list);
-void	ft_lstadd_front(t_list **list, t_list *new);
-void	print_list(t_list *lst);
-void	rev_print_list(t_list *lst);
-void	ft_lstadd_back(t_list **list, t_list *new);
-int		resolution(t_list **list_a, t_list **lists_b);
-size_t	ft_lst_size(t_list *list_a);
-t_list	*reverse(t_list *list);
-t_list	*rotate(t_list *list);
-void	push(t_list **dst, t_list **src);
-void	init_index(t_list *list);
-unsigned	find_index(t_list *list, int v);
+int				parsing(int argc, char **argv, t_list **t_list);
+int				ft_error(int n);
+int				tab_size(char *str);
+int				count_chained_list(t_list *list);
+t_list			*add_link(t_list *list, int nbr);
+void			print_list(t_list *list);
+t_list			*swap(t_list *list);
+t_list			*ft_lstnew(int n);
+void			ft_lstclear(t_list **list);
+void			ft_lstadd_front(t_list **list, t_list *new);
+void			print_list(t_list *lst);
+void			rev_print_list(t_list *lst);
+void			ft_lstadd_back(t_list **list, t_list *new);
+int				resolution(t_list **list_a, t_list **lists_b);
+size_t			ft_lst_size(t_list *list_a);
+t_list			*reverse(t_list *list);
+t_list			*rotate(t_list *list);
+void			push(t_list **dst, t_list **src);
+void			init_index(t_list *list);
+unsigned int	find_index(t_list *list, int v);
+void			ft_freetab(char **tab, int i);
+void			ft_freelist(t_list **list);
 
 #endif

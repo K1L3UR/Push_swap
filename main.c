@@ -1,62 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/01 19:13:25 by arnduran          #+#    #+#             */
+/*   Updated: 2023/10/01 20:12:08 by arnduran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "libft/libft.h"
 #include "push_swap.h"
 
-// t_ska	*ft_lstlast(t_ska *lst)
-// {
-// 	t_ska	*ptr = lst;
-
-//     if (lst == NULL)
-//     	return NULL;
-//     while (ptr->next != NULL)
-//     	ptr = ptr->next;
-// 	return (ptr);
-// }
-
-// void print_list(t_ska *list)
-// {
-// 	while (list != NULL)
-// 	{
-// 		ft_putnbr_fd(list->n, 1);
-// 		ft_putchar_fd('\n', 1);
-// 		list = list->next;
-// 	}
-// }
-
-// t_ska *add_link(t_ska *list, int nbr)
-// {
-// 	t_ska 	*ptr;
-
-// 	ptr = malloc(sizeof(t_ska));
-// 	if (!ptr)
-// 		return (NULL);
-// 	ptr->n = nbr;
-// 	ptr->next = list;
-// 	return (ptr);
-// }
-
-t_list	*ft_b(t_list **list_b)
-{
-	t_list	*ptr;
-
-	ptr = ft_lstnew(8);
-	ft_lstadd_front(list_b, ft_lstnew(8));
-	return (*list_b);
-}
-
 int	main(int argc, char **argv)
 {
-	t_list	*list_a; // la seule liste qui recois la chaine de nombre
+	t_list	*list_a;
 	t_list	*list_b;
 	int		i;
 	int		n;
 
 	list_b = NULL;
 	i = 1;
-	// ft_lstadd_front(&list_b, ft_lstnew(2));
-	//ft_lstadd_front(&list_b, ft_lstnew(10));
 	if (argc < 2)
 		return (ft_error(-1));
 	list_a = NULL;
@@ -65,127 +33,21 @@ int	main(int argc, char **argv)
 	printf("-----------PARSING------------------------\n");
 	print_list(list_a);
 	printf("-----------------------------------\n");
-	//swap(list_a);
 	printf("-------------SWAP----------------------\n");
 	print_list(list_a);
 	printf("///////////////////SWAP-A//////////////////\n");
-	// push(&list_b, &list_a);
-	// push(&list_a, &list_b);
-	// push_b_to_a(&list_a, &list_b);
-	// push_b_to_a(&list_a, &list_b);
 	printf("///////////////////LIST A //////////////////\n");
 	print_list(list_a);
 	printf("///////////////////LIST B//////////////////\n");
 	print_list(list_b);
 	printf("///////////////////TEST TAILLE LISTE//////////////////\n");
 	printf("%lu\n", ft_lst_size(list_a));
-	printf("BIZARE BIZARE BIZARE BIZARE \n");
-	//print_list(list_a);
-	// print_list(list_b);
-	// printf("///////////////////LIST B AFTER PUSH B//////////////////\n");
-	// swap(list_a);
-	// print_list(list_a);
-	// printf("///////////////////LIST_A//////////////////\n");
-	// rotate(list_a);
-	// print_list(list_a);
-	// printf("///////////////////LIST_A//////////////////\n");
-	// push_a(&list_a, &list_b);
-	// printf("----------------LIST_A--------------------\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST_A//////////////////\n");
-	// printf("-------------------LIST_B-----------------\n");
-	// list_a = rotate(list_a);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// push(&list_b, &list_a);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// push(&list_b, &list_a);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// list_a = rotate(list_a);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// push(&list_a, &list_b);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// push(&list_a, &list_b);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// push(&list_b, &list_a);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// list_a = rotate(list_a);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// list_a = rotate(list_a);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// push(&list_b, &list_a);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// push(&list_a, &list_b);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
-	// getc(stdin);
-	// push(&list_a, &list_b);
-	// printf("///////////////////LIST A //////////////////\n");
-	// print_list(list_a);
-	// printf("///////////////////LIST B//////////////////\n");
-	// print_list(list_b);
 	resolution(&list_a, &list_b);
 	printf("~~~~~~~~~~~~~~~~~~~~LIST_B PUIS A~~~~~~~~~~~~~~~~\n");
 	print_list(list_a);
 	printf("~~~~~~~~~~~~~~~~~~~LIST A PUIS B~~~~~~~~~~~~~~~~~\n");
 	print_list(list_b);
-	// printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	ft_lstclear(&list_a);
+	ft_lstclear(&list_b);
 	return (0);
 }
-
-// int	main()
-// {
-// 	int		tab[] = {1, 2, 3};
-// 	t_ska 	*list;
-// 	int		i;
-
-// 	i = 3;
-// 	list = NULL;
-// 	while (i > 0)
-// 	{
-// 		list = add_link(list ,tab[i - 1] );
-// 		i--;
-// 	}
-// 	print_list(list);
-// }

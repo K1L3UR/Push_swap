@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   instruction.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/01 19:13:33 by arnduran          #+#    #+#             */
+/*   Updated: 2023/10/01 19:13:48 by arnduran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-t_list	*swap(t_list *list) // a tester pour ss (swap a et swap b)
+t_list	*swap(t_list *list)
 {
 	t_list			*ptr;
 	t_list			*fuhrer;
@@ -9,7 +21,7 @@ t_list	*swap(t_list *list) // a tester pour ss (swap a et swap b)
 
 	ptr = list;
 	if (ptr->next == ptr->prev)
-		return(list);
+		return (list);
 	fuhrer = ptr->next;
 	tmp = ptr->n;
 	ptr->n = fuhrer->n;
@@ -20,12 +32,16 @@ t_list	*swap(t_list *list) // a tester pour ss (swap a et swap b)
 	return (list);
 }
 
-t_list	*rotate(t_list *list) // je suis rotate
+/* rotate (ra)*/
+
+t_list	*rotate(t_list *list)
 {
 	return (list->next);
 }
 
-t_list	*reverse(t_list *list) // je suis reverse rotate
+/* je suis reverse rotate (rra)*/
+
+t_list	*reverse(t_list *list)
 {
 	return (list->prev);
 }
@@ -41,7 +57,7 @@ void	push(t_list **dst, t_list **src)
 		return ;
 	if ((*src)->next == (*src))
 	{
-		ft_lstadd_front(dst ,ptr_src);
+		ft_lstadd_front(dst, ptr_src);
 		*dst = reverse(*dst);
 		*src = NULL;
 		return ;

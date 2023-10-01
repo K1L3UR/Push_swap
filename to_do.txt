@@ -1,20 +1,7 @@
-faire le parsing. (chercher quoi faire dans le parsing je verifie juste si cest des nombres ou pas atm)
+gerer la valeur max dans une chaine de caracteres
 
-faire en sorte d'utiliser ARGC et ARGV et non un tab[] // effectuer
+gerer les leaks
 
-utiliser des listes chainer pour stocker les piles A et B // je stock deja la pile a il faut cree la liste b et la remplir
+voir si le visualiser marche bien
 
-je refait des fonctions pour manipuler les liste chainer dans le dossier bonus lst || 7 septembre
-
-// JE DOIS ADD BACK DANS LA LISTE CHAINER, CURRENTLY JE ADD JUSTE, DONC JE DOIS ADD A LA FIN PUIS REPARCOURIR ET RE ADD A
-LA FIN ET NON CUMMULER COMME JE LE FAIT ATM //
-
-coder les instructions
-
-coder l'algorythme du push swap
-
-tester.
-
-
-
-le projet doit etre quasiment finit le 12 septembre.
+print les messages

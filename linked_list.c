@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   linked_list.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/01 19:13:03 by arnduran          #+#    #+#             */
+/*   Updated: 2023/10/01 20:09:17 by arnduran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 t_list	*ft_lstnew(int n)
 {
-	t_list *p;
+	t_list	*p;
 
 	p = (t_list *)malloc(sizeof(t_list));
 	p->n = n;
 	p->index = 0;
 	p->next = p;
 	p->prev = p;
-	return p;
+	return (p);
 }
 
 void	ft_lstclear(t_list **list)
@@ -50,7 +62,7 @@ void	ft_lstadd_back(t_list **list, t_list *new)
 void	ft_lstadd_front(t_list **list, t_list *new)
 {
 	t_list	*ptr;
-	
+
 	ptr = *list;
 	if (!new)
 		return ;
@@ -72,7 +84,7 @@ size_t	ft_lst_size(t_list *list)
 
 	if (!list)
 		return (0);
-	ptr_a = list;	
+	ptr_a = list;
 	i = 0;
 	while (1)
 	{
@@ -86,15 +98,16 @@ size_t	ft_lst_size(t_list *list)
 
 void	print_list(t_list *lst)
 {
-	t_list	*last = lst;
+	t_list	*last;
 
+	last = lst;
 	if (!lst)
 		return ;
 	while (1)
 	{
 		printf("%d %p %p %p %d \n", lst->n, lst->prev, lst, lst->next, lst->index);
 		if (lst->next == last)
-			break;
+			break ;
 		lst = lst->next;
 	}
 }

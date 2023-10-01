@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   resolution.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/01 19:12:49 by arnduran          #+#    #+#             */
+/*   Updated: 2023/10/01 19:40:23 by arnduran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	find_min(t_list *list)
@@ -6,7 +18,7 @@ int	find_min(t_list *list)
 	t_list	*last;
 
 	if (!list)
-		return(ft_error(-1));
+		return (ft_error(-1));
 	last = list;
 	min = list->n;
 	list = list->next;
@@ -62,17 +74,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 	head_a = *stack_a;
 	max_bits = find_digit(ft_lst_size(*stack_a) - 1);
 	size = ft_lst_size(*stack_a);
-	printf("%d min : \n", min); // bon
-	printf("%d max : \n", max); // bon 
-	printf("%d max_bits: \n", max_bits); // bon
-	printf("%d size : \n", size); // bon
-	printf("-------------------BEFORE RES-------------------\n");
-	// puts("list a");
-	// print_list(*stack_a);
-	// puts("list b");
-	// print_list(*stack_b);
 	printf("-------------------STARTING RESOLUTION-------------------\n");
-	int DD = 0;
 	while (i < max_bits)
 	{
 		j = 0;
@@ -87,7 +89,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 			else
 			{	
 				push(stack_b, stack_a);
-				printf("PUSH A TO B BOUCLE\n");			
+				printf("PUSH A TO B BOUCLE\n");
 			}
 		}
 		while (ft_lst_size(*stack_b) > 0)
@@ -98,7 +100,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 			printf("%lu\n", ft_lst_size(*stack_b));
 			print_list(*stack_b);
 			printf("PUSH B TO A BOUCLE\n");
-			getc(stdin);
+			//getc(stdin);
 		}
 		i++;
 	}
@@ -111,7 +113,7 @@ int	resolution(t_list **list_a, t_list **list_b)
 	int		digit;
 	t_list	*ptr_a;
 	t_list	*ptr_b;
-	
+
 	max = 0;
 	ptr_a = *list_a;
 	ptr_b = *list_b;
