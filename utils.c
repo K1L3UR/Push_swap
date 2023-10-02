@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:23:16 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/01 19:58:23 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:46:58 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,28 @@ int	tab_size(char	*str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
+}
+
+int	ft_checksorted(t_list *list_a)
+{
+	int		i;
+	t_list	*ptr_a;
+
+	// if (ft_lst_size(list_a) != 0)
+	// 	last = list_a;
+	// else
+	// 	return (0);
+	ptr_a = list_a;
+	while (1)
+	{
+		if (ptr_a->n > ptr_a->next->n)
+			return (0);
+		ptr_a = ptr_a->next;
+		if (ptr_a->next == list_a)
+			return (1);
+	}
+	printf("******************SORTED****************\n");
+	return (1);
 }
 
 int	ft_error(int n)

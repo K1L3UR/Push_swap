@@ -1,7 +1,9 @@
 gerer la valeur max dans une chaine de caracteres
 
-gerer les leaks
+gerer les leaks || cest fait
 
 voir si le visualiser marche bien
 
 print les messages
+
+gerer les listes de moins de 5 elems
