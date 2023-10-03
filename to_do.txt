@@ -1,5 +1,3 @@
 voir si le visualiser marche bien
 
 print les messages
-
-gerer les listes de moins de 5 elems

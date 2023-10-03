@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:13:16 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/03 22:04:44 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/03 22:22:46 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,22 @@ int		ft_isnbr(const char *s)
 	return (*s == 0);
 }
 
-void	double_check(t_list *list, int nb)
+int	double_check(t_list *list, int nb)
 {
 	t_list	*ptr;
 
 	if (!list)
-		return ;
+		return (1);
 	ptr = list->next;
 	while (1)
 	{
 		if (ptr->n == nb)
-			ft_error(-2);
+			return (0);
 		if (ptr == list)
-			break;
+			break ;
 		ptr = ptr->next;
 	}
+	return (1);
 }
 
 int	parsing(int argc, char **argv, t_list **list)
@@ -55,13 +56,13 @@ int	parsing(int argc, char **argv, t_list **list)
 	while (av[i])
 	{
 		num = ft_atoi(av[i]); // checker que je recois des chiffres
-		if (!ft_isnbr(av[i]) || errno == ERANGE)
+		if (!ft_isnbr(av[i]) || errno == ERANGE || double_check(*list, num) == 0)
 		{
 			ft_freetab(av);
+			ft_lstclear(list);
 			ft_error(-2);
 		}
 		ptr = ft_lstnew(num);
-		double_check(*list, num);
 		ft_lstadd_front(list, ptr);
 		i++;
 	}

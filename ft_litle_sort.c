@@ -2,7 +2,6 @@
 
 void sort_three(t_list **list_a, t_list **list_b)
 {
-	printf("%d\n", find_min(*list_a));
 	if (find_min(*list_a) == (*list_a)->n)
 	{
 		*list_a = reverse(*list_a);
@@ -21,10 +20,6 @@ void sort_three(t_list **list_a, t_list **list_b)
 		else
 			*list_a = swap(*list_a);
 	}
-	print_list(*list_a);
-	if (ft_checksorted(*list_a) == 0)
-		exit(0);
-	printf("========================LIST_BEFORE========================\n");
 }
 
 void	extract_min(t_list **list_a, t_list **list_b)

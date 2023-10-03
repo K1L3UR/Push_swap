@@ -1,0 +1,5 @@
+c pa trie
+valgrind  --leak-check=full --show-leak-kinds=all ./push_swap "-5 4 5 -4 0"
+
+boucle inf
+valgrind  --leak-check=full --show-leak-kinds=all ./push_swap "-5 4 5 8 -4 0"
