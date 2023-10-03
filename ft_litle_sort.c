@@ -2,103 +2,61 @@
 
 void sort_three(t_list **list_a, t_list **list_b)
 {
-	t_list	*a;
-	int		min;
-	int		nextmin;
-	int		max;
-	
-	a = *list_a;
-	printf("========================LIST_BEFORE========================\n");
+	printf("%d\n", find_min(*list_a));
+	if (find_min(*list_a) == (*list_a)->n)
+	{
+		*list_a = reverse(*list_a);
+		*list_a = swap(*list_a);
+	}
+	else if (find_max(*list_a) == (*list_a)->n)
+	{
+		*list_a = rotate(*list_a);
+		if (!(ft_checksorted(*list_a) == 1))
+			*list_a = swap(*list_a);
+	}
+	else
+	{
+		if (find_max(*list_a) == (*list_a)->next->n)
+			*list_a = reverse(*list_a);
+		else
+			*list_a = swap(*list_a);
+	}
 	print_list(*list_a);
-	printf("========================STRATING========================\n");
-	if (a == NULL || a->next == NULL || a->next->next == NULL)
-		return;
-	min = find_min(*list_a);
-	printf("%dmin\n", min); //2
-	nextmin = find_next_min(*list_a ,min);
-	printf("%dnxmin\n", nextmin); //2
-	//printf("%d\n", max); //8
-	// printf("%d\n", nextmin); //4
-	if ((ft_checksorted(*list_a) == 1))
+	if (ft_checksorted(*list_a) == 0)
 		exit(0);
-	print_list(*list_a);
-	printf("========================SWAP A========================\n");
-	printf("========================OPE SA========================\n");
-	print_list(*list_a);
-	printf("========================RRA========================\n");
-	*list_a = reverse(*list_a);
-	print_list(*list_a);
-	printf("========================OPE RRA========================\n");
-	// if (x > y && x > z)
-	// {
-	// 	printf("x > y && x > z\n");
-	// 	if (y > z)
-	// 	{
-	// 	printf("if\n");
-	// 		*list_a = reverse(*list_a); // z, y, x => x, y, z
-	// 	}
-	// 	else
-	// 	{
-	// 		printf("else\n");
-	// 		*list_a = swap(*list_a); // y, z, x => z, y, x
-	// 		*list_a = reverse(*list_a); // z, y, x => x, y, z
-	// 	}
-	// }
-	// else if (y > x && y > z)
-	// {
-	// 	printf("y > x && y > z\n");
-	// 	if (x > z)
-	// 	{	
-	// 		printf("if\n");
-	// 		*list_a = swap(*list_a); // x, z, y => z, x, y
-	// 	}
-	// 	else
-	// 	{
-	// 		printf("else\n");
-	// 		*list_a = rotate(*list_a); // z, x, y => y, x, z
-	// 	}
-	// }
-	// else if (x > y)
-	// {	
-	// 	printf("x > y\n");
-	// 	*list_a = swap(*list_a); // y, x, z => x, y, z
-	// }
-	print_list(*list_a);
-	printf("========================SORT THREE========================\n");
-	exit(1) ;
+	printf("========================LIST_BEFORE========================\n");
 }
 
+void	extract_min(t_list **list_a, t_list **list_b)
+{
+	int		min;
+	t_list*	(*op)(t_list*);
 
-// void	sort_three(t_list *list_a, t_list *list_b)
-// {
-// 	if (find_min(list_a) == (list_a)->n)
-// 	{
-// 		reverse(list_a);
-// 		list_a = swap(list_a);
-// 	}
-// 	else if (find_max(list_a) == (list_a)->n)
-// 	{
-// 		rotate(list_a);
-// 		if (!ft_checksorted(list_a))
-// 			list_a = swap(list_a);
-// 	}
-// 	else
-// 	{
-// 		if (list_a->n < list_a->next->next->n) //find_max(*list_a)) == 1)
-// 			reverse(list_a);
-// 		else
-// 			list_a = swap(list_a);
-// 	}
-// 	printf("========================SORT THREE========================\n");
-// 	print_list(list_a);
-// 	exit(0);
-// 	return ;
-// }
+	
+	min = find_min(*list_a);
+	if (find_npos(*list_a, min) >= 2)
+		op = &reverse;
+	else
+		op = &rotate;
+	while ((*list_a)->n != min)
+		*list_a = op(*list_a);
+	push(list_b, list_a);
+}
+
+void	sort_four(t_list **list_a, t_list **list_b)
+{
+	extract_min(list_a, list_b);
+	sort_three(list_a, list_b);
+	push(list_a, list_b);
+}
 
 void	sort_five(t_list **list_a, t_list **list_b)
 {
-	printf("SORT FIVE\n");
-	return ;
+	extract_min(list_a, list_b);
+	extract_min(list_a, list_b);
+	sort_three(list_a, list_b);
+	push(list_a, list_b);
+	push(list_a, list_b);
 }
 
 int	ft_litle_sort(t_list **list_a, t_list **list_b)
@@ -106,10 +64,13 @@ int	ft_litle_sort(t_list **list_a, t_list **list_b)
 	if ((ft_checksorted(*list_a) == 1))
 	{
 		printf("******************SORTED****************\n");
+		ft_lstclear(list_a);
 		exit(0);
 	}
 	if (ft_lst_size(*list_a) == 3)
 		sort_three(list_a, list_b);
+	else if (ft_lst_size(*list_a) == 4)
+		sort_four(list_a, list_b);
 	else
 		sort_five(list_a, list_b);
 	return (0);

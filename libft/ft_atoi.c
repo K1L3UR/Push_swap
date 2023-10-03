@@ -3,48 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnduran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 22:31:55 by arnduran          #+#    #+#             */
-/*   Updated: 2020/01/18 22:34:30 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/03 20:04:21 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	init(int *negatif, int *i, int *nb)
-{
-	*negatif = 0;
-	*i = 0;
-	*nb = 0;
-}	
+#include "libft.h"
+#include <limits.h>
+#include <errno.h>
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
-	int	negatif;
-	int	i;
-	int	nb;
+	int		negatif;
+	long	nb;
+	long	max;
 
-	init(&negatif, &i, &nb);
-	if (str[i] == '\0')
-		return (0);
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v' || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\f')
-		i++;
-	if (str[i] == '-')
-		negatif = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	negatif = 1;
+	nb = 0;
+	max = INT_MAX;
+	while (*str == ' ' || (*str >= 8 && *str <= 13))
+		str++;
+	if (*str == '-')
+		negatif = -1;
+	if (negatif == -1)
+		max++;
+	if (*str == '+' || *str == '-')
+		str++;
+	while (ft_isdigit(*str))
 	{
-		nb = nb * 10;
-		nb = nb + str[i] - '0';
-		i++;
+		nb = nb * 10 + *str - '0';
+		if (nb > max)
+			errno = ERANGE;
+		str++;
 	}
-	if (negatif == 1)
-		return (nb * -1);
-	else
-		return (nb);
+	return (nb * negatif);
 }
-
-/* 
-return (negatif ? -nb : nb); 
-*/

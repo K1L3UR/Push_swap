@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:12:49 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/02 19:52:46 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/03 21:27:26 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	find_min(t_list *list)
 	last = list;
 	min = list->n;
 	list = list->next;
-	while (list->next != last)
+	while (list != last) // while (list->next != last) 
 	{
 		if (min > list->n)
 			min = list->n;
@@ -41,7 +41,7 @@ int	find_max(t_list *list)
 	last = list;
 	max = list->n;
 	list = list->next;
-	while ((list) != last)
+	while (list != last)
 	{
 		if (max < list->n)
 			max = list->n;
@@ -117,8 +117,10 @@ int	resolution(t_list **list_a, t_list **list_b)
 	max = 0;
 	ptr_a = *list_a;
 	ptr_b = *list_b;
-	if (ft_lst_size(*list_a) <= 5)
+	if (ft_lst_size(*list_a) <= 5) {
 		ft_litle_sort(list_a, list_b);
+		return (0);
+	}
 	max = find_max(*list_a);
 	min = find_min(*list_a);
 	radix_sort(list_a, list_b, min, max);

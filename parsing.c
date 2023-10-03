@@ -6,36 +6,46 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:13:16 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/02 19:49:24 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/03 22:04:44 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 #include "push_swap.h"
+
+int		ft_isnbr(const char *s)
+{
+	if (*s == '+' || *s == '-')
+		s++;
+	while (ft_isdigit(*s))
+		s++;
+	return (*s == 0);
+}
 
 void	double_check(t_list *list, int nb)
 {
 	t_list	*ptr;
 
-	ptr = list;
-	if (ptr->next == list)
+	if (!list)
 		return ;
-	ptr = ptr->next;
-	while (ptr->next != list)
+	ptr = list->next;
+	while (1)
 	{
 		if (ptr->n == nb)
 			ft_error(-2);
-		else
-			ptr = ptr->next;
+		if (ptr == list)
+			break;
+		ptr = ptr->next;
 	}
 }
 
 int	parsing(int argc, char **argv, t_list **list)
 {
 	int		i;
-	int		num;
+	long	num;
 	t_list	*ptr;
 	char	**av;
 
@@ -44,13 +54,18 @@ int	parsing(int argc, char **argv, t_list **list)
 	av = ft_split(argv[1], ' ');
 	while (av[i])
 	{
-		ptr = ft_lstnew(ft_atoi(av[i]));
-		num = ft_atoi(av[i]);
-		ft_lstadd_front(list, ptr);
+		num = ft_atoi(av[i]); // checker que je recois des chiffres
+		if (!ft_isnbr(av[i]) || errno == ERANGE)
+		{
+			ft_freetab(av);
+			ft_error(-2);
+		}
+		ptr = ft_lstnew(num);
 		double_check(*list, num);
+		ft_lstadd_front(list, ptr);
 		i++;
 	}
-	ft_freetab(av, i);
+	ft_freetab(av);
 	return (i);
 }
 

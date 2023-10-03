@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:23:16 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/02 18:46:58 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/03 22:06:28 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,20 @@ void	ft_freelist(t_list **list)
 	}
 }
 
-void	ft_freetab(char **tab, int i)
+void	ft_freetab(char **tab)
 {
-	while (i >= 0)
+	int	i;
+	
+	i = 0;
+	while (tab[i])
 	{
 		free(tab[i]);
-		i--;
+		i++;
 	}
 	free(tab);
 }
 
-int	tab_size(char	*str)
+int	tab_size(char *str)
 {
 	int	i;
 

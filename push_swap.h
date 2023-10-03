@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:20:53 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/02 19:26:32 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/03 22:06:42 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <errno.h>
 # include "libft/libft.h"
 
 typedef struct s_list
@@ -47,15 +48,13 @@ t_list			*rotate(t_list *list);
 void			push(t_list **dst, t_list **src);
 void			init_index(t_list *list);
 unsigned int	find_index(t_list *list, int v);
-void			ft_freetab(char **tab, int i);
+void			ft_freetab(char **tab);
 void			ft_freelist(t_list **list);
 int				ft_litle_sort(t_list **list_a, t_list **list_b);
 int				find_max(t_list *list);
 int				find_min(t_list *list);
 int				find_next_min(t_list *list, int nb);
 int				ft_checksorted(t_list *list_a); // faut le fix
-int				ft_middle(int a, int b, int c);// a suppr
-int				ft_min(int a, int b, int c); // a suppr
-int				ft_max(int a, int b, int c);// a suppr
+int				find_npos(t_list *l, int n);
 
 #endif
