@@ -83,9 +83,5 @@ int	ft_error(int n)
 		exit((ft_putendl_fd("Error parsing", 2), -2));
 	if (n == -3)
 		exit((ft_putendl_fd("Error malloc", 2), -3));
-	if (n == -4)
-		exit(-4);
-	if (n == -5)
-		exit(-5);
 	exit(EXIT_FAILURE);
 }

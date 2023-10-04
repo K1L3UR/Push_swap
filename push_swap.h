@@ -54,7 +54,8 @@ int				ft_litle_sort(t_list **list_a, t_list **list_b);
 int				find_max(t_list *list);
 int				find_min(t_list *list);
 int				find_next_min(t_list *list, int nb);
-int				ft_checksorted(t_list *list_a); // faut le fix
+int				ft_checksorted(t_list *list_a);
 int				find_npos(t_list *l, int n);
+t_list			*reverse_list(t_list *list);
 
 #endif

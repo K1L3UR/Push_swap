@@ -25,3 +25,10 @@ int	find_npos(t_list *l, int n)
 	}
 	return (pos);
 }
+
+/* #cette fonction sert a reverse la liste tel rra# */
+
+t_list	*reverse_list(t_list *list)
+{
+	return (list->prev);
+}

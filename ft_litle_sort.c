@@ -2,6 +2,8 @@
 
 void sort_three(t_list **list_a, t_list **list_b)
 {
+	if (ft_checksorted(*list_a) == 1)
+		return ;
 	if (find_min(*list_a) == (*list_a)->n)
 	{
 		*list_a = reverse(*list_a);
@@ -49,6 +51,10 @@ void	sort_five(t_list **list_a, t_list **list_b)
 {
 	extract_min(list_a, list_b);
 	extract_min(list_a, list_b);
+	if ((*list_a)->next->n < (*list_a)->prev->n)
+	{
+
+	}
 	sort_three(list_a, list_b);
 	push(list_a, list_b);
 	push(list_a, list_b);

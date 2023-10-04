@@ -29,6 +29,7 @@ t_list	*swap(t_list *list)
 	mpt = ptr->index;
 	ptr->index = fuhrer->index;
 	fuhrer->index = mpt;
+	ft_putstr_fd("sa\n", 1);
 	return (list);
 }
 
@@ -36,6 +37,7 @@ t_list	*swap(t_list *list)
 
 t_list	*rotate(t_list *list)
 {
+	ft_putstr_fd("ra\n", 1);
 	return (list->next);
 }
 
@@ -43,6 +45,7 @@ t_list	*rotate(t_list *list)
 
 t_list	*reverse(t_list *list)
 {
+	ft_putstr_fd("rra\n", 1);
 	return (list->prev);
 }
 
@@ -58,7 +61,7 @@ void	push(t_list **dst, t_list **src)
 	if ((*src)->next == (*src))
 	{
 		ft_lstadd_front(dst, ptr_src);
-		*dst = reverse(*dst);
+		*dst = reverse_list(*dst);
 		*src = NULL;
 		return ;
 	}
@@ -68,5 +71,6 @@ void	push(t_list **dst, t_list **src)
 	ptr_src->prev = ptr_src;
 	ptr_src->next = ptr_src;
 	ft_lstadd_front(dst, ptr_src);
-	*dst = reverse(*dst);
+	*dst = reverse_list(*dst);
+	ft_putstr_fd("pa\n", 1);
 }

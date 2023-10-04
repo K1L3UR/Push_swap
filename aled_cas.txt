@@ -1,5 +1,5 @@
-c pa trie
+c pa trie \\ parceque je recevais la liste dans sort 3 deja trier et que jeffectuais des op dessus
 valgrind  --leak-check=full --show-leak-kinds=all ./push_swap "-5 4 5 -4 0"
 
-boucle inf
+boucle inf \\ regler mais je sais pas pourquoi 
 valgrind  --leak-check=full --show-leak-kinds=all ./push_swap "-5 4 5 8 -4 0"
