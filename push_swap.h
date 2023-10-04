@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:20:53 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/03 22:06:42 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:12:43 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <string.h>
 # include <errno.h>
 # include "libft/libft.h"
+
+typedef	enum {true = 'a', false = 'b'} bool;
 
 typedef struct s_list
 {
@@ -45,7 +47,7 @@ int				resolution(t_list **list_a, t_list **lists_b);
 size_t			ft_lst_size(t_list *list_a);
 t_list			*reverse(t_list *list);
 t_list			*rotate(t_list *list);
-void			push(t_list **dst, t_list **src);
+void			push(t_list **dst, t_list **src, int bool);
 void			init_index(t_list *list);
 unsigned int	find_index(t_list *list, int v);
 void			ft_freetab(char **tab);

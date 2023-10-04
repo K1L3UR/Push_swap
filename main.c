@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:13:25 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/03 22:23:40 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:18:41 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 		return (ft_error(-1));
-	if (argv[1][0] == 0) // gere le "" cas
+	if (argv[1][0] == 0)
 		ft_error(-2);
 	list_a = NULL;
 	n = parsing(argc, argv, &list_a);

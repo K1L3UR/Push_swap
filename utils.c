@@ -6,14 +6,13 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:23:16 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/03 22:06:28 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:16:14 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-
 #include "push_swap.h"
 
 void	ft_freelist(t_list **list)
@@ -31,7 +30,7 @@ void	ft_freelist(t_list **list)
 void	ft_freetab(char **tab)
 {
 	int	i;
-	
+
 	i = 0;
 	while (tab[i])
 	{
@@ -56,10 +55,6 @@ int	ft_checksorted(t_list *list_a)
 	int		i;
 	t_list	*ptr_a;
 
-	// if (ft_lst_size(list_a) != 0)
-	// 	last = list_a;
-	// else
-	// 	return (0);
 	ptr_a = list_a;
 	while (1)
 	{
@@ -69,7 +64,6 @@ int	ft_checksorted(t_list *list_a)
 		if (ptr_a->next == list_a)
 			return (1);
 	}
-	printf("******************SORTED****************\n");
 	return (1);
 }
 

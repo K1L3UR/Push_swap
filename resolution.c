@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:12:49 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/03 21:27:26 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:14:32 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,12 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
 		{
 			head_a = *stack_a;
 			if (((head_a->index >> i) & 1) == 1)
-			{
 				(*stack_a) = rotate((*stack_a));
-			}
 			else
-			{	
-				push(stack_b, stack_a);
-			}
+				push(stack_b, stack_a, false);
 		}
 		while (ft_lst_size(*stack_b) > 0)
-		{
-			push(stack_a, stack_b);
-		}
+			push(stack_a, stack_b, true);
 		i++;
 	}
 }

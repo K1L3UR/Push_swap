@@ -3,3 +3,6 @@ valgrind  --leak-check=full --show-leak-kinds=all ./push_swap "-5 4 5 -4 0"
 
 boucle inf \\ regler mais je sais pas pourquoi 
 valgrind  --leak-check=full --show-leak-kinds=all ./push_swap "-5 4 5 8 -4 0"
+
+segfault //
+./push_swap "1 2" # toute liste de deux argv a trier

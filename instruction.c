@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:13:33 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/03 21:36:24 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:11:20 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,13 @@ t_list	*rotate(t_list *list)
 	return (list->next);
 }
 
-/* je suis reverse rotate (rra)*/
-
 t_list	*reverse(t_list *list)
 {
 	ft_putstr_fd("rra\n", 1);
 	return (list->prev);
 }
 
-void	push(t_list **dst, t_list **src)
+void	push(t_list **dst, t_list **src, int bool)
 {
 	t_list	*ptr_dst;
 	t_list	*ptr_src;
@@ -72,5 +70,8 @@ void	push(t_list **dst, t_list **src)
 	ptr_src->next = ptr_src;
 	ft_lstadd_front(dst, ptr_src);
 	*dst = reverse_list(*dst);
-	ft_putstr_fd("pa\n", 1);
+	if (bool == true)
+		ft_putstr_fd("pa\n", 1);
+	else
+		ft_putstr_fd("pb\n", 1);
 }
