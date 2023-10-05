@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:13:16 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/04 18:17:29 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:25:41 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,32 @@ int	parsing(int argc, char **argv, t_list **list)
 	long	num;
 	t_list	*ptr;
 	char	**av;
+	int		size;
 
 	i = 0;
 	ptr = *list;
-	av = ft_split(argv[1], ' ');
-	while (av[i])
+	if (argc == 2)
+		{
+			av = ft_split(argv[1], ' ');
+			while(av[i])
+				i++;
+			size = i;
+			i = 0;
+		}
+		else
+		{
+			av = argv;
+			size = argc;
+			i = 1;
+		}
+	while (i < size)
 	{
 		num = ft_atoi(av[i]);
 		if (!ft_isnbr(av[i]) || errno == ERANGE
 			|| double_check(*list, num) == 0)
 		{
-			ft_freetab(av);
+			if (argc == 2)
+				ft_freetab(av);
 			ft_lstclear(list);
 			ft_error(-2);
 		}
@@ -67,7 +82,8 @@ int	parsing(int argc, char **argv, t_list **list)
 		ft_lstadd_front(list, ptr);
 		i++;
 	}
-	ft_freetab(av);
+	if (argc == 2)
+		ft_freetab(av);
 	return (i);
 }
 
