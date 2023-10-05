@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:13:16 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/05 19:41:42 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 22:37:48 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@
 
 int	ft_isnbr(const char *s)
 {
+	int	has_digit;
+
 	if (*s == '+' || *s == '-')
 		s++;
+	has_digit = ft_isdigit(*s);
 	while (ft_isdigit(*s))
 		s++;
-	return (*s == 0);
+	return (has_digit && !*s);
 }
 
 int	double_check(t_list *list, int nb)

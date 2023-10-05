@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:23:16 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/05 19:35:29 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 22:02:14 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	ft_checksorted(t_list *list_a)
 {
 	t_list	*ptr_a;
 
+	if (!list_a)
+		return (0);
 	ptr_a = list_a;
 	while (1)
 	{
@@ -73,7 +75,7 @@ int	ft_error(int n)
 	if (n == -1)
 		exit((ft_putendl_fd("Wrong number of arguments", 2), -1));
 	if (n == -2)
-		exit((ft_putendl_fd("Error parsing", 2), -2));
+		exit((ft_putendl_fd("Error", 2), -2));
 	if (n == -3)
 		exit((ft_putendl_fd("Error malloc", 2), -3));
 	exit(EXIT_FAILURE);
