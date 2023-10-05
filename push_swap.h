@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:20:53 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/04 18:12:43 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:42:22 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <errno.h>
 # include "libft/libft.h"
 
-typedef	enum {true = 'a', false = 'b'} bool;
+typedef enum bool {true, false}	t_bool;
 
 typedef struct s_list
 {

@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:05:47 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/04 18:18:08 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:34:34 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ int	ft_litle_sort(t_list **list_a, t_list **list_b)
 	}
 	if (ft_lst_size(*list_a) == 2)
 	{
-		*list_a = swap(*list_a);
+		if ((ft_checksorted(*list_a) == 0))
+			*list_a = swap(*list_a);
+		print_list(*list_a);
 		ft_lstclear(list_a);
 		exit(0);
 	}

@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:13:33 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/04 18:11:20 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:38:47 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*swap(t_list *list)
 	unsigned int	mpt;
 
 	ptr = list;
+	ft_putstr_fd("sa\n", 1);
 	if (ptr->next == ptr->prev)
 		return (list);
 	fuhrer = ptr->next;
@@ -29,7 +30,6 @@ t_list	*swap(t_list *list)
 	mpt = ptr->index;
 	ptr->index = fuhrer->index;
 	fuhrer->index = mpt;
-	ft_putstr_fd("sa\n", 1);
 	return (list);
 }
 
@@ -40,6 +40,8 @@ t_list	*rotate(t_list *list)
 	ft_putstr_fd("ra\n", 1);
 	return (list->next);
 }
+
+/* reverse rotate (rra)*/
 
 t_list	*reverse(t_list *list)
 {
@@ -56,6 +58,10 @@ void	push(t_list **dst, t_list **src, int bool)
 	ptr_src = *src;
 	if (!*src)
 		return ;
+	if (bool == true)
+		ft_putstr_fd("pa\n", 1);
+	else
+		ft_putstr_fd("pb\n", 1);
 	if ((*src)->next == (*src))
 	{
 		ft_lstadd_front(dst, ptr_src);
@@ -70,8 +76,4 @@ void	push(t_list **dst, t_list **src, int bool)
 	ptr_src->next = ptr_src;
 	ft_lstadd_front(dst, ptr_src);
 	*dst = reverse_list(*dst);
-	if (bool == true)
-		ft_putstr_fd("pa\n", 1);
-	else
-		ft_putstr_fd("pb\n", 1);
 }

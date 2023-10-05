@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:13:03 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/04 18:32:45 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:37:24 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,20 +94,4 @@ size_t	ft_lst_size(t_list *list)
 			return (i);
 	}
 	return (i);
-}
-
-void	print_list(t_list *lst)
-{
-	t_list	*last;
-
-	last = lst;
-	if (!lst)
-		return ;
-	while (1)
-	{
-		printf("%d %p %p %p %d \n", lst->n, lst->prev, lst, lst->next, lst->index);
-		if (lst->next == last)
-			break ;
-		lst = lst->next;
-	}
 }
