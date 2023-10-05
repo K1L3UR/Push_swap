@@ -6,13 +6,13 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:05:47 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/05 17:06:28 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 19:40:06 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_list **list_a, t_list **list_b)
+void	sort_three(t_list **list_a)
 {
 	if (ft_checksorted(*list_a) == 1)
 		return ;
@@ -54,7 +54,7 @@ void	extract_min(t_list **list_a, t_list **list_b)
 void	sort_four(t_list **list_a, t_list **list_b)
 {
 	extract_min(list_a, list_b);
-	sort_three(list_a, list_b);
+	sort_three(list_a);
 	push(list_a, list_b, true);
 }
 
@@ -62,7 +62,7 @@ void	sort_five(t_list **list_a, t_list **list_b)
 {
 	extract_min(list_a, list_b);
 	extract_min(list_a, list_b);
-	sort_three(list_a, list_b);
+	sort_three(list_a);
 	push(list_a, list_b, true);
 	push(list_a, list_b, true);
 }
@@ -82,7 +82,7 @@ int	ft_litle_sort(t_list **list_a, t_list **list_b)
 		exit(0);
 	}
 	if (ft_lst_size(*list_a) == 3)
-		sort_three(list_a, list_b);
+		sort_three(list_a);
 	else if (ft_lst_size(*list_a) == 4)
 		sort_four(list_a, list_b);
 	else

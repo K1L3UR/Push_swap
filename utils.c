@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:23:16 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/04 18:16:14 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 19:35:29 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	tab_size(char *str)
 
 int	ft_checksorted(t_list *list_a)
 {
-	int		i;
 	t_list	*ptr_a;
 
 	ptr_a = list_a;

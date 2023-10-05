@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:12:49 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/05 16:52:52 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 19:37:19 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	find_digit(int max)
 	return (max_bits);
 }
 
-void	radix_sort(t_list **stack_a, t_list **stack_b, int min, int max)
+void	radix_sort(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*head_a;
 	int		i;
@@ -95,7 +95,6 @@ int	resolution(t_list **list_a, t_list **list_b)
 {
 	int		max;
 	int		min;
-	int		digit;
 	t_list	*ptr_a;
 	t_list	*ptr_b;
 
@@ -109,6 +108,6 @@ int	resolution(t_list **list_a, t_list **list_b)
 	}
 	max = find_max(*list_a);
 	min = find_min(*list_a);
-	radix_sort(list_a, list_b, min, max);
+	radix_sort(list_a, list_b);
 	return (0);
 }

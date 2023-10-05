@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:20:53 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/05 17:25:13 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 19:37:51 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@ int				find_next_min(t_list *list, int nb);
 int				ft_checksorted(t_list *list_a);
 int				find_npos(t_list *l, int n);
 t_list			*reverse_list(t_list *list);
+void			argv_parser(int *i, char **av, t_list **list, int argc);
+int				ft_isnbr(const char *s);
+int				double_check(t_list *list, int nb);
 
 #endif

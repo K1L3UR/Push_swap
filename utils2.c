@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:40:35 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/05 16:40:35 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/05 19:43:34 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,27 @@ t_list	*reverse_list(t_list *list)
 	return (list->prev);
 }
 
+void	argv_parser(int *i, char **av, t_list **list, int argc)
+{
+	long	num;
+	t_list	*ptr;
+
+	ptr = *list;
+	num = ft_atoi(av[*i]);
+	if (!ft_isnbr(av[*i]) || errno == ERANGE
+		|| double_check(*list, num) == 0)
+	{
+		if (argc == 2)
+			ft_freetab(av);
+		ft_lstclear(list);
+		ft_error(-2);
+	}
+	ptr = ft_lstnew(num);
+	ft_lstadd_front(list, ptr);
+	(*i)++;
+}
+
+/*
 void	print_list(t_list *lst)
 {
 	t_list	*last;
@@ -46,3 +67,4 @@ void	print_list(t_list *lst)
 		lst = lst->next;
 	}
 }
+*/
