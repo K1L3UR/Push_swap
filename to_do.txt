@@ -1,3 +1,0 @@
-voir si le visualiser marche bien
-
-print les messages

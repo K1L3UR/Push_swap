@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:12:49 by arnduran          #+#    #+#             */
-/*   Updated: 2023/10/05 19:37:19 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:52:22 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int	resolution(t_list **list_a, t_list **list_b)
 	max = 0;
 	ptr_a = *list_a;
 	ptr_b = *list_b;
+	if (ft_checksorted(*list_a) == 1)
+		return (0);
 	if (ft_lst_size(*list_a) <= 5)
 	{
 		ft_litle_sort(list_a, list_b);
